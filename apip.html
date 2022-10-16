@@ -4,21 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>API Practice</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="#" />
-    <form class="form" action="">
-      <input
-        class="search-field"
-        for="search"
-        type="text"
-        placeholder="Search for a GIF!"
-      />
-      <button class="search-button" for="search">Submit!</button>
-      <button class="fetch-button">Give me another!</button>
-    </form>
-
+    <div class="container">
+      <img class="gif" src="#" />
+      <form class="form" action="">
+        <input
+          class="search-field"
+          for="search"
+          type="text"
+          placeholder="Search for a GIF!"
+        />
+        <button class="search-button" for="search">Submit!</button>
+        <button class="fetch-button">Give me another!</button>
+      </form>
+    </div>
     <script>
       const searchField = document.querySelector('.search-field');
       const searchButton = document.querySelector('.search-button');
