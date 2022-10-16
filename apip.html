@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="#" />
+    <form class="form" action="">
+      <input
+        class="search-field"
+        for="search"
+        type="text"
+        placeholder="Search for a GIF!"
+      />
+      <button class="search-button" for="search">Submit!</button>
+      <button class="fetch-button">Give me another!</button>
+    </form>
+
+    <script>
+      const searchField = document.querySelector('.search-field');
+      const searchButton = document.querySelector('.search-button');
+      searchButton.addEventListener('click', getGif);
+      document.addEventListener('DOMContentLoaded', getGif);
+      const img = document.querySelector('img');
+      const fetchButton = document.querySelector('.fetch-button');
+      fetchButton.addEventListener('click', getGif);
+      const form = document.querySelector('.form');
+      function getGif(e) {
+        const userSearch = searchField.value;
+        console.log(userSearch);
+
+        if (!userSearch) {
+          fetch(
+            'https://api.giphy.com/v1/gifs/translate?api_key=F4u2U8JEI2C6eRl7PZky5ar68C2m0Z14&s=cats',
+            { mode: 'cors' }
+          )
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (response) {
+              img.src = response.data.images.original.url;
+            })
+            .catch(function (err) {
+              window.alert('gif search failed- try another search term!');
+            });
+        } else {
+          e.preventDefault();
+          fetch(
+            'https://api.giphy.com/v1/gifs/translate?api_key=F4u2U8JEI2C6eRl7PZky5ar68C2m0Z14&s=' +
+              encodeURIComponent(userSearch),
+            { mode: 'cors' }
+          )
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (response) {
+              img.src = response.data.images.original.url;
+            })
+            .catch(function (err) {
+              window.alert('gif search failed- try another search term!');
+            });
+        }
+      }
+    </script>
+  </body>
+</html>
